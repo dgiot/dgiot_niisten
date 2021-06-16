@@ -17,17 +17,9 @@
 -author("stoneliu").
 
 -export([
-    start_http/0,
     get_deviceid/2
 ]).
 
-start_http() ->
-    Port = application:get_env(dgiot_niisten, port, 80),
-    {file, Here} = code:is_loaded(?MODULE),
-    Dir = filename:dirname(filename:dirname(Here)),
-    Root = dgiot_httpc:url_join([Dir, "/priv/"]),
-    DocRoot = Root ++ "www",
-    dgiot_http_server:start_http(?MODULE, Port, DocRoot).
 
 get_deviceid(ProdcutId, DevAddr) ->
     #{<<"objectId">> := DeviceId} =

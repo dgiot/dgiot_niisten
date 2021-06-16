@@ -28,10 +28,7 @@
 %%--------------------------------------------------------------------
 
 start(_StartType, _StartArgs) ->
-    {ok, Sup} = dgiot_niisten_sup:start_link(),
-    Spec =  dgiot_niisten:start_http(),
-    {ok, _} = supervisor:start_child(Sup, Spec),
-    {ok, Sup}.
+    dgiot_niisten_sup:start_link().
 
 stop(_State) ->
     ok.
